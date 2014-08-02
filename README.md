@@ -17,8 +17,29 @@ Starting At The Surface
 ***
 
 ### History Of CLI On VIP
+```
+<?php
+/*
+ * Moves posts from one category (and all its children) to another category.
+ */
 
-@todo example of old bin script
+die( "Please edit the config settings before running this script\n" );
+
+// for the audit trail - put your user id in here
+global $current_user; $current_user = '12345';
+
+// Set blog id
+$_blog_id = 12345;
+$_blog_url = 'http://testblog.wordpress.com';
+switch_to_blog( $_blog_id );
+do_it_to_it_remove_term();
+```
+
+***
+
+### Thorsten, The Enlightened
+
+   @todo quote from Thorsten
 
 ***
 
@@ -45,9 +66,7 @@ Digging In By Contributing
       Given a WP install
 
       When I run `wp user meta add 1 foo 'bar'`
-      Then STDOUT should not be empty
-
-      When I run `wp user meta get 1 foo`
+      And I run `wp user meta get 1 foo`
       Then STDOUT should be:
         """
         bar
@@ -79,25 +98,57 @@ Internals You Should Use
 ### `\WP_CLI\Iterator`
 
 * Query and CSV iterators.
-* Iterator == increment through large data set.
+* Iterator == helps you process large data sets.
 * Prevent performance issues from reading all data at once.
 
 ```
-foreach( new \WP_CLI\Iterators\Query( "SELECT * FROM node ORDER BY nid ASC" ) as $i => $node_row ) {
-	
+$iterator = new \WP_CLI\Iterators\Query( "SELECT * FROM node" );
+foreach( $iterator as $i => $row ) {
+	if ( $post = Post::get_by_original_id( $row->nid ) ) {
+		WP_CLI::warning( "Post already exists" ) );
+		continue;
+	}
+	$post = Post::create_from_original_row( $row );
 }
 ```
 
 ***
 
-### `\WP_CLI\Process` (to come in 0.17.0)
+### `\WP_CLI\Process` (coming in 0.17.0)
 
 * Create and run a system process.
 * Returns `\WP_CLI\ProcessRun` so you can inspect results.
 
+```
+wp> $process = \WP_CLI\Process::create( "rm -rf /" );
+wp> $process->run()
+```
+
 ***
 
-Thanks!
+```
+object(WP_CLI\ProcessRun)#116 (6) {
+  ["stdout"]=>
+  string(0) ""
+  ["stderr"]=>
+  string(103) "rm: it is dangerous to operate recursively on '/'
+rm: use --no-preserve-root to override this failsafe
+"
+  ["return_code"]=>
+  int(1)
+  ["command"]=>
+  string(8) "rm -rf /"
+  ["cwd"]=>
+  NULL
+  ["env"]=>
+  array(0) {
+  }
+}
+```
+
+***
+
+Get hacking!
 -------
 
 @danielbachhuber
