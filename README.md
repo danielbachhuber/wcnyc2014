@@ -12,34 +12,33 @@ Starting At The Surface
 
 ### What The Client Wants
 
-    "For our upcoming site rebrand, we need to migrate all of the "
+> For our upcoming site rebrand, we need to migrate all of the
 
 ***
 
 ### History Of CLI On VIP
-```
-<?php
-/*
- * Moves posts from one category (and all its children) to another category.
- */
 
-die( "Please edit the config settings before running this script\n" );
+    <?php
+    /*
+     * Moves posts from one category (and all its children) to another category.
+     */
 
-// for the audit trail - put your user id in here
-global $current_user; $current_user = '12345';
+    die( "Please edit the config settings before running this script\n" );
 
-// Set blog id
-$_blog_id = 12345;
-$_blog_url = 'http://testblog.wordpress.com';
-switch_to_blog( $_blog_id );
-do_it_to_it_remove_term();
-```
+    // for the audit trail - put your user id in here
+    global $current_user; $current_user = '12345';
+
+    // Set blog id
+    $_blog_id = 12345;
+    $_blog_url = 'http://testblog.wordpress.com';
+    switch_to_blog( $_blog_id );
+    do_it_to_it_remove_term();
 
 ***
 
 ### Thorsten The Enlightened, December 2011
 
-   "I played with WP_CLI yesterday a bit and will likely build all my further developments on top of it. It’s utilizing php-cli-tools and gives you easy access to all kind of parameter parsing, progress bars, menus, user input, tables and the like. With minor effort I was able to integrate my CLI exporter into it and now am trying to get commit access to the repository. I’ll likely implement new scripts on top of it from now on and if possible will port over some of the old stuff."
+> I played with WP_CLI yesterday a bit and will likely build all my further developments on top of it. It’s utilizing php-cli-tools and gives you easy access to all kind of parameter parsing, progress bars, menus, user input, tables and the like. With minor effort I was able to integrate my CLI exporter into it and now am trying to get commit access to the repository. I’ll likely implement new scripts on top of it from now on and if possible will port over some of the old stuff."
 
 ***
 
@@ -101,16 +100,14 @@ Internals You Should Use
 * Iterator == helps you process large data sets.
 * Prevent performance issues from reading all data at once.
 
-```
-$iterator = new \WP_CLI\Iterators\Query( "SELECT * FROM node" );
-foreach( $iterator as $i => $row ) {
-	if ( $post = Post::get_by_original_id( $row->nid ) ) {
-		WP_CLI::warning( "Post already exists" ) );
-		continue;
-	}
-	$post = Post::create_from_original_row( $row );
-}
-```
+    $iterator = new \WP_CLI\Iterators\Query( "SELECT * FROM node" );
+    foreach( $iterator as $i => $row ) {
+    	if ( $post = Post::get_by_original_id( $row->nid ) ) {
+    		WP_CLI::warning( "Post already exists" ) );
+    		continue;
+    	}
+    	$post = Post::create_from_original_row( $row );
+    }
 
 ***
 
@@ -119,32 +116,20 @@ foreach( $iterator as $i => $row ) {
 * Create and run a system process.
 * Returns `\WP_CLI\ProcessRun` so you can inspect results.
 
-```
-wp> $process = \WP_CLI\Process::create( "rm -rf /" );
-wp> $process->run()
-```
+    wp> $process = \WP_CLI\Process::create( "rm -rf /" );
+    wp> $process->run()
 
 ***
 
-```
-object(WP_CLI\ProcessRun)#116 (6) {
-  ["stdout"]=>
-  string(0) ""
-  ["stderr"]=>
-  string(103) "rm: it is dangerous to operate recursively on '/'
-rm: use --no-preserve-root to override this failsafe
-"
-  ["return_code"]=>
-  int(1)
-  ["command"]=>
-  string(8) "rm -rf /"
-  ["cwd"]=>
-  NULL
-  ["env"]=>
-  array(0) {
-  }
-}
-```
+    object(WP_CLI\ProcessRun)#116 (6) {
+      ["stdout"] => string(0) ""
+      ["stderr"] => string(103) "rm: it is dangerous to operate recursively on '/' rm: use --no-preserve-root to override this failsafe"
+      ["return_code"] => int(1)
+      ["command"]=> string(8) "rm -rf /"
+      ["cwd"] => NULL
+      ["env"] =>
+      array(0) {}
+    }
 
 ***
 
