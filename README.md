@@ -42,16 +42,35 @@ Starting At The Surface
 
 ***
 
-### First Pull Request
-
-***
-
 Digging In By Contributing
 ------------
 
 ***
 
-#
+### First Pull Request
+
+@todo whatever
+
+***
+
+### Design Decisions: Composability
+
+* The output from one command should be easily pipe-able to another command.
+* Similarly, there should be no overlapping functionality between commands.
+
+    // Bad
+    $ wp post delete --post_type=banana --force
+
+    // Good
+    $ wp post delete $(wp post list --format=ids --post_type=banana) --force
+
+***
+
+### Design Decisions: Run In Admin
+
+1. Added `define( 'WP_ADMIN', true )` in v0.8.0 (#164) to fix WP Super Cache.
+2. Removed in v0.9.0 because we no longer loaded advanced-cache.php (#351).
+3. Final verdict in v0.10.0 (#385): WP-CLI is an alternative to wp-admin.
 
 ***
 
@@ -125,6 +144,8 @@ Internals You Should Use
 ***
 
 ### `\WP_CLI\Formatter`
+
+* Output your results as a table, CSV, JSON or just IDs.
 
 ***
 
