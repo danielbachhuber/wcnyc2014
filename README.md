@@ -85,7 +85,7 @@ Digging In By Contributing
 * Tests break into "Context-Action-Outcome".
 * Why it's important: it's easy!
 
-`// features/user-meta.feature`
+In features/user-meta.feature:
 
     Scenario: Usermeta CRUD
       Given a WP install
@@ -101,7 +101,7 @@ Digging In By Contributing
 
 ### Behat: Easy BDD
 
-`// features/config.feature`
+In features/config.feature:
 
     Scenario: Disabled commands
       Given a WP install
@@ -121,7 +121,7 @@ Digging In By Contributing
 
 ### Behat: Easy BDD
 
-`// features/users.feature`
+In features/users.feature:
 
     Scenario: Impose Site Users
       Given a WP install
