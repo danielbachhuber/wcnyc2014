@@ -180,6 +180,19 @@ Surprise! [Let's ship some code](https://github.com/wp-cli/wp-cli/pull/1309).
 
 ***
 
+### BDD For Your Commands
+
+Now BDD for your commands is as easy as*:
+
+    wp scaffold package-tests /path/to/package/dir/
+    cd /path/to/package/dir/
+    ./bin/install-package-tests.sh
+    ./vendor/bin/behat
+
+*ymmv
+
+***
+
 Internals You Should Use
 ------------------------
 
