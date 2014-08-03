@@ -182,11 +182,13 @@ Surprise! [Let's ship some code](https://github.com/wp-cli/wp-cli/pull/1309).
 
 ### BDD For Your Commands
 
-Now BDD for your commands is as easy as*:
+Now BDD for your commands [is as easy as](https://github.com/wp-cli/wp-cli/wiki/Package-Functional-Tests)*:
 
     wp scaffold package-tests /path/to/package/dir/
     cd /path/to/package/dir/
     ./bin/install-package-tests.sh
+    export WP_CLI_BIN_DIR=/tmp/wp-cli-phar
+    export WP_CLI_CONFIG_PATH=/tmp/wp-cli-phar/config.yml
     ./vendor/bin/behat
 
 *ymmv
