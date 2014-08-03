@@ -73,7 +73,7 @@ Digging In By Contributing
 ### Design Decisions: Run In Admin
 
 1. Added `define( 'WP_ADMIN', true )` in v0.8.0 ([#164](https://github.com/wp-cli/wp-cli/pull/164)) to fix WP Super Cache.
-2. Removed in v0.9.0 because we no longer loaded advanced-cache.php ([#351](https://github.com/wp-cli/wp-cli/issues/351)).
+2. Removed in v0.9.0 because WP-CLI no longer loaded advanced-cache.php ([#351](https://github.com/wp-cli/wp-cli/issues/351)).
 3. Final verdict in v0.10.0 ([#385](https://github.com/wp-cli/wp-cli/pull/385#issuecomment-16661583)): WP-CLI is an alternative to wp-admin.
 4. Ultimately, this means you have access to all admin functions.
 
@@ -84,6 +84,8 @@ Digging In By Contributing
 * Behat is Behavior-Driven Development.
 * Tests break into "Context-Action-Outcome".
 * Why it's important: it's easy!
+
+// features/user-meta.feature
 
     Scenario: Usermeta CRUD
       Given a WP install
@@ -98,6 +100,8 @@ Digging In By Contributing
 ***
 
 ### Behat: Easy BDD
+
+// features/config.feature
 
     Scenario: Disabled commands
       Given a WP install
@@ -117,6 +121,8 @@ Digging In By Contributing
 
 ### Behat: Easy BDD
 
+// features/users.feature
+
     Scenario: Impose Site Users
       Given a WP install
       And a site-users.yml file:
@@ -124,7 +130,6 @@ Digging In By Contributing
         state: site
           users:
             editorone:
-              display_name: Editor One
               email: editorone@example.com
               role: editor
         """
@@ -150,7 +155,26 @@ Internals You Should Use
 
 ### \WP_CLI\Formatter
 
-* Output your results as a table, CSV, JSON or just IDs.
+* Output your results as a table, CSV, JSON, count or just IDs.
+* Expects: format, an array of objects, and named fields to display.
+
+    WP_CLI\Utils\format_items( 'json', get_users(), array( 'ID', 'user_login' ) );
+
+***
+
+### WP_CLI Class Static Methods
+
+    // Run a command without launching a new process
+    WP_CLI::run_command( array( 'user', 'create', 'danieltest', 'd+danieltest@danielbachhuber.com' ), array( 'role' => 'administrator' ) );
+
+    // Launch a new process to run a command
+    WP_CLI::launch_self( 'user create', array( 'danieltest2', 'd+danieltest2@danielbachhuber.com' ), array( 'role' => 'administrator' ) );
+
+    // Logger wrappers
+    WP_CLI::log( 'Updated post 785 title to "The New Post Title"');
+    WP_CLI::success( 'Updated 9 posts' );
+    WP_CLI::warning( 'Invalid post id.' );
+    WP_CLI::error( 'Skynet is here' );
 
 ***
 
@@ -162,8 +186,7 @@ Internals You Should Use
 
 ### \WP_CLI\Iterator
 
-* Query and CSV iterators.
-* Iterator == helps you process large data sets.
+* Query and CSV iterators. Iterator == helps you process large data sets.
 * Prevent performance issues from reading all data at once.
 
     $iterator = new \WP_CLI\Iterators\Query( "SELECT * FROM node" );
@@ -172,7 +195,11 @@ Internals You Should Use
     		WP_CLI::warning( "Post already exists" ) );
     		continue;
     	}
-    	$post = Post::create_from_original_row( $row );
+    	$post = Post::create_from_node_row( $row );
+    }
+
+    foreach ( new \WP_CLI\Iterators\CSV( 'users.csv' ) as $i => $new_user ) {
+    	// Do whatever
     }
 
 ***
@@ -187,19 +214,7 @@ Internals You Should Use
 
 ***
 
-    object(WP_CLI\ProcessRun)#116 (6) {
-      ["stdout"] => string(0) ""
-      ["stderr"] => string(103) "rm: it is dangerous to operate recursively on '/' rm: use --no-preserve-root to override this failsafe"
-      ["return_code"] => int(1)
-      ["command"]=> string(8) "rm -rf /"
-      ["cwd"] => NULL
-      ["env"] =>
-      array(0) {}
-    }
-
-***
-
-Get hacking!
+Thanks
 -------
 
 [@danielbachhuber](https://twitter.com/danielbachhuber)
