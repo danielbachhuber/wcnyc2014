@@ -85,7 +85,7 @@ Digging In By Contributing
 * Tests break into "Context-Action-Outcome".
 * Why it's important: it's easy!
 
-// features/user-meta.feature
+`// features/user-meta.feature`
 
     Scenario: Usermeta CRUD
       Given a WP install
@@ -101,7 +101,7 @@ Digging In By Contributing
 
 ### Behat: Easy BDD
 
-// features/config.feature
+`// features/config.feature`
 
     Scenario: Disabled commands
       Given a WP install
@@ -121,7 +121,7 @@ Digging In By Contributing
 
 ### Behat: Easy BDD
 
-// features/users.feature
+`// features/users.feature`
 
     Scenario: Impose Site Users
       Given a WP install
@@ -158,6 +158,8 @@ Internals You Should Use
 * Output your results as a table, CSV, JSON, count or just IDs.
 * Expects: format, an array of objects, and named fields to display.
 
+<!-- Markdown formatting hack -->
+
     WP_CLI\Utils\format_items( 'json', get_users(), array( 'ID', 'user_login' ) );
 
 ***
@@ -189,6 +191,8 @@ Internals You Should Use
 * Query and CSV iterators. Iterator == helps you process large data sets.
 * Prevent performance issues from reading all data at once.
 
+<!-- Markdown formatting hack -->
+
     $iterator = new \WP_CLI\Iterators\Query( "SELECT * FROM node" );
     foreach( $iterator as $i => $row ) {
     	if ( $post = Post::get_by_original_id( $row->nid ) ) {
@@ -208,6 +212,8 @@ Internals You Should Use
 
 * Create and run a system process.
 * Returns `\WP_CLI\ProcessRun` so you can inspect results.
+
+<!-- Markdown formatting hack -->
 
     wp> $process = \WP_CLI\Process::create( "rm -rf /" );
     wp> $process->run()
