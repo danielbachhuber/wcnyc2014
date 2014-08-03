@@ -92,6 +92,12 @@ But, my first pull request was reverted ([#181](https://github.com/wp-cli/wp-cli
 
 ### Other Pull Requests
 
+* `wp user import-csv` - Create users from CSV.
+* `wp export` and `wp import` - Export and import as WXR.
+* `wp * list --format=<format>` - List objects as table, CSV, JSON, ids, etc.
+* `wp term` - Manage terms.
+* `wp --prompt` - Interactive prompt for command arguments.
+* Others.
 
 ***
 
