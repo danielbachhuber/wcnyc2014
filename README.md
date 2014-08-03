@@ -184,7 +184,7 @@ Internals You Should Use
 
 ***
 
-### \WP_CLI\Formatter
+### WP_CLI\Formatter
 
 * Output your results as a table, CSV, JSON, count or just IDs.
 * Expects: format, an array of objects, and named fields to display.
@@ -192,6 +192,7 @@ Internals You Should Use
 <!-- Markdown formatting hack -->
 
     WP_CLI\Utils\format_items( 'json', get_users(), array( 'ID', 'user_login' ) );
+    WP_CLI\Utils\format_items( 'table', get_users(), array( 'ID', 'user_login' ) );
 
 ***
 
@@ -231,7 +232,7 @@ Internals You Should Use
 
 ***
 
-### \WP_CLI\Iterator
+### WP_CLI\Iterator
 
 * Query and CSV iterators. Iterator == helps you process large data sets.
 * Prevent performance issues from reading all data at once.
@@ -253,7 +254,7 @@ Internals You Should Use
 
 ***
 
-### \WP_CLI\Process (coming in 0.17.0)
+### WP_CLI\Process (coming in 0.17.0)
 
 * Create and run a system process.
 * Returns `\WP_CLI\ProcessRun` so you can inspect results.
