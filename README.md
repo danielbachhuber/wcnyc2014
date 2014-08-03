@@ -12,7 +12,9 @@ Starting At The Surface
 
 ### What The Client Wants
 
-> For our upcoming site rebrand, we need to migrate all of the
+> For our upcoming site rebrand, we need to move all of the 'Entrepreneurship' posts (and children) to the "Businessology" category. Also, because it's tied to the theme launch, we need this to happen as close to the launch as possible.
+
+> Can you be around on Sunday night to make this happen?
 
 ***
 
@@ -38,12 +40,14 @@ Starting At The Surface
 
 ### Thorsten The Enlightened, December 2011
 
-> I played with WP_CLI yesterday a bit and will likely build all my further developments on top of it. It’s utilizing php-cli-tools and gives you easy access to all kind of parameter parsing, progress bars, menus, user input, tables and the like. With minor effort I was able to integrate my CLI exporter into it and now am trying to get commit access to the repository. I’ll likely implement new scripts on top of it from now on and if possible will port over some of the old stuff."
+> I played with WP_CLI yesterday a bit and will likely build all my further developments on top of it. It’s utilizing php-cli-tools and gives you easy access to all kind of parameter parsing, progress bars, menus, user input, tables and the like.
+
+> With minor effort I was able to integrate my CLI exporter into it and now am trying to get commit access to the repository. I’ll likely implement new scripts on top of it from now on and if possible will port over some of the old stuff.
 
 ***
 
 Digging In By Contributing
-------------
+--------------------------
 
 ***
 
