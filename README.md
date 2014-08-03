@@ -73,6 +73,46 @@ Digging In By Contributing
 
 ***
 
+### Behat: Easy BDD
+
+    Scenario: Disabled commands
+      Given a WP install
+      And a config.yml file:
+        """
+        disabled_commands:
+        - eval-file
+        """
+
+      When I try `WP_CLI_CONFIG_PATH=config.yml wp help eval-file`
+      Then STDERR should be:
+        """
+        Error: The 'eval-file' command has been disabled from the config file.
+        """
+
+***
+
+### Behat: Easy BDD
+
+    Scenario: Impose Site Users
+      Given a WP install
+      And a site-users.yml file:
+        """
+        state: site
+          users:
+            editorone:
+              display_name: Editor One
+              email: editorone@example.com
+              role: editor
+        """
+
+      When I run `wp dictator impose site-users.yml`
+      Then STDOUT should not be empty
+
+      When I run `wp dictator compare site-users.yml`
+      Then STDOUT should be empty
+
+***
+
 ### BDD For Your Commands
 
 Surprise! Let's ship some code.
