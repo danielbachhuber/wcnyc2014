@@ -2,6 +2,7 @@ A Journey To The Center of WP-CLI
 =================================
 
 [Daniel Bachhuber](http://danielbachhuber.com) - [@danielbachhuber](https://twitter.com/danielbachhuber) - WCNYC 2014
+Powered by [`wp present`](https://github.com/danielbachhuber/wp-cli-present-command)
 
 ***
 
@@ -18,7 +19,7 @@ Starting At The Surface
 
 ***
 
-### Bin Directory Full Of Scripts
+### Bin Dirs Full Of Scripts
 
     <?php
     /*
@@ -205,10 +206,10 @@ Internals You Should Use
     WP_CLI::launch_self( 'user create', array( 'danieltest2', 'd+danieltest2@danielbachhuber.com' ), array( 'role' => 'administrator' ) );
 
     // Logger wrappers
-    WP_CLI::log( 'Updated post 785 title to "The New Post Title"');
-    WP_CLI::success( 'Updated 9 posts' );
-    WP_CLI::warning( 'Invalid post id.' );
-    WP_CLI::error( 'Skynet is here' );
+    WP_CLI::log( 'Updated post 785 title to "The New Post Title".'); // Updated post 785 title to "The New Post Title".
+    WP_CLI::success( 'Updated 9 posts.' ); // Success: Updated 9 posts.
+    WP_CLI::warning( 'Invalid post id.' ); // Warning: Invalid post id.
+    WP_CLI::error( 'Skynet is here.' ); // Error: Skynet is here
 
     // Colorize your strings
     WP_CLI::colorize( '%RApple%n%g' ); // "% R" for red bright, "% n % g" to restore to green
