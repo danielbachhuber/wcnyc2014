@@ -1,7 +1,7 @@
 A Journey To The Center of WP-CLI
 =================================
 
-Daniel Bachhuber - @danielbachhuber - WCNYC 2014
+[Daniel Bachhuber](http://danielbachhuber.com) - [@danielbachhuber](https://twitter.com/danielbachhuber) - WCNYC 2014
 
 ***
 
@@ -18,7 +18,7 @@ Starting At The Surface
 
 ***
 
-### History Of CLI On VIP
+### When I Started At WordPress.com VIP
 
     <?php
     /*
@@ -51,7 +51,7 @@ Digging In By Contributing
 
 ***
 
-### First Pull Request
+### My First Pull Request
 
 @todo whatever
 
@@ -72,9 +72,10 @@ Digging In By Contributing
 
 ### Design Decisions: Run In Admin
 
-1. Added `define( 'WP_ADMIN', true )` in v0.8.0 (#164) to fix WP Super Cache.
-2. Removed in v0.9.0 because we no longer loaded advanced-cache.php (#351).
-3. Final verdict in v0.10.0 (#385): WP-CLI is an alternative to wp-admin.
+1. Added `define( 'WP_ADMIN', true )` in v0.8.0 ([#164](https://github.com/wp-cli/wp-cli/pull/164)) to fix WP Super Cache.
+2. Removed in v0.9.0 because we no longer loaded advanced-cache.php ([#351](https://github.com/wp-cli/wp-cli/issues/351)).
+3. Final verdict in v0.10.0 ([#385](https://github.com/wp-cli/wp-cli/pull/385#issuecomment-16661583)): WP-CLI is an alternative to wp-admin.
+4. Ultimately, this means you have access to all admin functions.
 
 ***
 
@@ -138,7 +139,7 @@ Digging In By Contributing
 
 ### BDD For Your Commands
 
-Surprise! Let's ship some code.
+Surprise! [Let's ship some code](https://github.com/wp-cli/wp-cli/pull/1309).
 
 ***
 
@@ -147,7 +148,7 @@ Internals You Should Use
 
 ***
 
-### `\WP_CLI\Formatter`
+### \WP_CLI\Formatter
 
 * Output your results as a table, CSV, JSON or just IDs.
 
@@ -159,7 +160,7 @@ Internals You Should Use
 
 ***
 
-### `\WP_CLI\Iterator`
+### \WP_CLI\Iterator
 
 * Query and CSV iterators.
 * Iterator == helps you process large data sets.
@@ -176,7 +177,7 @@ Internals You Should Use
 
 ***
 
-### `\WP_CLI\Process` (coming in 0.17.0)
+### \WP_CLI\Process (coming in 0.17.0)
 
 * Create and run a system process.
 * Returns `\WP_CLI\ProcessRun` so you can inspect results.
@@ -201,5 +202,5 @@ Internals You Should Use
 Get hacking!
 -------
 
-@danielbachhuber
+[@danielbachhuber](https://twitter.com/danielbachhuber)
 https://github.com/danielbachhuber/wcnyc2014
