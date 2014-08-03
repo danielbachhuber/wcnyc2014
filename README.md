@@ -178,11 +178,25 @@ Internals You Should Use
     WP_CLI::warning( 'Invalid post id.' );
     WP_CLI::error( 'Skynet is here' );
 
+    // Colorize your strings
+    WP_CLI::colorize( '%RApple%n%g' ); // "% R" for red bright, "% n % g" to restore to green
+
 ***
 
-### php-cli-tools
+### [php-cli-tools](https://github.com/wp-cli/php-cli-tools)
 
 * Heavily incorporated into WP-CLI — and we now maintain!
+* Used to build table format, `WP_CLI::colorize()` and others.
+* Includes other useful tools too.
+
+<!-- Markdown formatting hack -->
+
+    $progress = new \cli\progress\Bar( 'Demoing progress bar', 10 );
+    for ( $i = 0; $i < 10; $i++ ) {
+    	$progress->tick();
+    	usleep( 500000 );
+    }
+    $progress->finish();
 
 ***
 
@@ -220,7 +234,7 @@ Internals You Should Use
 
 ***
 
-Thanks
+Thanks. Questions?
 -------
 
 [@danielbachhuber](https://twitter.com/danielbachhuber)
