@@ -10,7 +10,7 @@ Starting At The Surface
 
 ***
 
-### What The Client Wants
+### What The Client Needs
 
 > For our upcoming site rebrand, we need to move all of the 'Entrepreneurship' posts (and children) to the "Businessology" category. Also, because it's tied to the theme launch, we need this to happen as close to the launch as possible.
 
@@ -18,7 +18,7 @@ Starting At The Surface
 
 ***
 
-### When I Started At WordPress.com VIP
+### Bin Directory Full Of Scripts
 
     <?php
     /*
@@ -51,9 +51,27 @@ Digging In By Contributing
 
 ***
 
-### My First Pull Request
+### My First Pull Request ([#165](https://github.com/wp-cli/wp-cli/pull/165))
 
-@todo whatever
+> It would be nice if `wp post delete` accepted `--post_type` as an argument (as well as other arguments like date, etc.)
+
+I turned this:
+
+    wp post delete <ID> --force
+
+... into this:
+
+    wp post delete [<ID>] [--post_type=<value>] [--post_author=<value>] [--post_status=<value>] [--force]
+
+Woo hoo!
+
+***
+
+### Revert!
+
+But, my first pull request was reverted ([#181](https://github.com/wp-cli/wp-cli/pull/181)):
+
+> Adding associative parameters to wp post delete was a mistake. It should have been a separate subcommand all along. It will make both documentation and implementation clearer.
 
 ***
 
@@ -69,6 +87,11 @@ Digging In By Contributing
 
     // Good
     $ wp post delete $(wp post list --format=ids --post_type=banana) --force
+
+***
+
+### Other Pull Requests
+
 
 ***
 
