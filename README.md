@@ -62,6 +62,8 @@ Digging In By Contributing
 * The output from one command should be easily pipe-able to another command.
 * Similarly, there should be no overlapping functionality between commands.
 
+<!-- Markdown formatting hack -->
+
     // Bad
     $ wp post delete --post_type=banana --force
 
